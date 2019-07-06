@@ -16,10 +16,10 @@ import java.util.Map;
 public class WebHooksConfiguration extends BaseBuildConfigurationAwarePlugin
         implements MiscellaneousPlanConfigurationPlugin {
     private Map<String, Event[]> buildEvents = new HashMap<String, Event[]>() {{
-        put("Build", new Event[]{new Event("Build Started"), new Event("Build Canceled"), new Event("Build Succeed"), new Event("Build Failed")});
-        put("Stage", new Event[]{new Event("Stage Started"), new Event("Job Canceled"), new Event("Job Succeed"), new Event("Job Failed")});
-        put("Job", new Event[]{new Event("Job Started"), new Event("Job Canceled"), new Event("Job Succeed"), new Event("Job Failed")});
-        put("Deployment", new Event[]{new Event("Deployment Started"), new Event("Deployment Succeed"), new Event("Deployment Failed")});
+        put("Build", new Event[]{new Event("Build Started"), new Event("Build Finished")});
+        put("Stage", new Event[]{new Event("Stage Started"), new Event("Stage Finished")});
+        put("Job", new Event[]{new Event("Job Started"), new Event("Job Finished")});
+        put("Deployment", new Event[]{new Event("Deployment Started"), new Event("Deployment Finished")});
         put("Release", new Event[]{new Event("Release Created")});
     }};
 

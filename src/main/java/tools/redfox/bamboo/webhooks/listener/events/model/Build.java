@@ -102,8 +102,9 @@ public class Build {
         return status;
     }
 
-    public void setStatus(String status) {
+    public Build setStatus(String status) {
         this.status = status;
+        return this;
     }
 
     public String getSummary() {

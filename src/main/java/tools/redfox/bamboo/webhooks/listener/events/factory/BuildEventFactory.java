@@ -42,7 +42,7 @@ public class BuildEventFactory extends AbstractFactory {
                 result,
                 getAbsoluteUrlFor("/browse/" + result.getBuildResultKey())
         );
-        build.setStatus(result.isSuccessful() ? "SUCCESS" : "FAILED");
+        build.setStatus(result.isFinished() ? (result.isSuccessful() ? "SUCCESS" : "FAILED") : "CANCELLED");
         build.setSummary(result.getShortReasonSummary());
 
         for (ChainStageResult stage : result.getStageResults()) {

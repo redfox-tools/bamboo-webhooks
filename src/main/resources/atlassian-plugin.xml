@@ -10,7 +10,7 @@
     <!-- add our i18n resource -->
     <resource type="i18n" name="i18n" location="bamboo-webhooks"/>
 
-<!--    <bambooEventListener key="deploymentEventListener" class="tools.redfox.bamboo.webhooks.listener.DeploymentEventListener"/>-->
+    <bambooEventListener key="deploymentEventListener" class="tools.redfox.bamboo.webhooks.listener.DeploymentEventListener"/>
     <bambooEventListener key="pluginEventListener" class="tools.redfox.bamboo.webhooks.listener.PluginEventListener"/>
 
     <preChainAction key="webhookPreBuildAction" class="tools.redfox.bamboo.webhooks.listener.action.PreBuildAction" />

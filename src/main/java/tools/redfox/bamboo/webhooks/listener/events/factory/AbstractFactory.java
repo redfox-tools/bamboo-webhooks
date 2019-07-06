@@ -16,7 +16,7 @@ import tools.redfox.bamboo.webhooks.listener.events.model.Plan;
 import tools.redfox.bamboo.webhooks.listener.events.model.Stage;
 
 abstract public class AbstractFactory {
-    protected final BambooUrl bambooUrl;
+    protected static BambooUrl bambooUrl;
 
     public AbstractFactory(@ComponentImport AdministrationConfigurationAccessor administrationConfigurationAccessor) {
         bambooUrl = new BambooUrl(administrationConfigurationAccessor);
@@ -44,7 +44,7 @@ abstract public class AbstractFactory {
         );
     }
 
-    protected String getAbsoluteUrlFor(String path) {
+    public static String getAbsoluteUrlFor(String path) {
         return bambooUrl.getBaseUrl(UrlMode.ABSOLUTE).concat(path);
     }
 
@@ -87,7 +87,7 @@ abstract public class AbstractFactory {
                 true
         ));
         job.setStatus(
-                summary.getBuildCancelledDate() != null ? "CANCELED" :
+                !summary.isFinished() || summary.getBuildCancelledDate() != null ? "CANCELED" :
                         summary.isSuccessful() ? "SUCCESS" : "FAILED"
         );
 
