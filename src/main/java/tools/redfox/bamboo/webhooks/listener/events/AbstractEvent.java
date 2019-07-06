@@ -1,5 +1,6 @@
 package tools.redfox.bamboo.webhooks.listener.events;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import tools.redfox.bamboo.webhooks.listener.events.model.Build;
 import tools.redfox.bamboo.webhooks.listener.events.model.Plan;
 
@@ -42,6 +43,7 @@ public abstract class AbstractEvent {
         return time;
     }
 
+    @JsonIgnore
     public String getConfigKey() {
         return "custom.bamboo.webhook.events." + getEventName().toLowerCase().replaceAll("[^a-z]+", "_");
     }
