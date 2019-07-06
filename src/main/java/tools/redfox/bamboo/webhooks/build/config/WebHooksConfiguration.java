@@ -10,17 +10,17 @@ import com.atlassian.bamboo.ww2.actions.build.admin.create.BuildConfiguration;
 import com.atlassian.plugin.spring.scanner.annotation.imports.ComponentImport;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class WebHooksConfiguration extends BaseBuildConfigurationAwarePlugin
         implements MiscellaneousPlanConfigurationPlugin {
-    private Map<String, Event[]> buildEvents = new HashMap<String, Event[]>() {{
+    private Map<String, Event[]> buildEvents = new LinkedHashMap<String, Event[]>() {{
         put("Build", new Event[]{new Event("Build Started"), new Event("Build Finished")});
         put("Stage", new Event[]{new Event("Stage Started"), new Event("Stage Finished")});
         put("Job", new Event[]{new Event("Job Started"), new Event("Job Finished")});
         put("Deployment", new Event[]{new Event("Deployment Started"), new Event("Deployment Finished")});
-        put("Release", new Event[]{new Event("Release Created")});
+        put("Release", new Event[]{new Event("Version Created")});
     }};
 
     public WebHooksConfiguration(@ComponentImport TemplateRenderer templateRenderer) {

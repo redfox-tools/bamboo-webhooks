@@ -4,7 +4,6 @@ import com.atlassian.bamboo.chains.Chain;
 import com.atlassian.bamboo.chains.ChainExecution;
 import com.atlassian.bamboo.chains.ChainResultsSummary;
 import com.atlassian.bamboo.chains.plugins.PostChainAction;
-import com.atlassian.bamboo.v2.build.BuildContext;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import tools.redfox.bamboo.webhooks.listener.events.factory.BuildEventFactory;
@@ -23,8 +22,7 @@ public class PostBuildAction implements PostChainAction {
     @Override
     public void execute(@NotNull Chain chain, @NotNull ChainResultsSummary chainResultsSummary, @NotNull ChainExecution chainExecution) throws InterruptedException, Exception {
         this.handler.notify(
-                buildEventFactory.createBuildFinishedEvent(chain, chainResultsSummary),
-                (BuildContext) chainExecution.getBuildIdentifier()
+                buildEventFactory.createBuildFinishedEvent(chain, chainResultsSummary)
         );
     }
 }

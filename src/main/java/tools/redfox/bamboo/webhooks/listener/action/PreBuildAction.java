@@ -22,8 +22,7 @@ public class PreBuildAction implements PreChainAction {
     @Override
     public void execute(@NotNull Chain chain, @NotNull ChainExecution chainExecution) throws InterruptedException, Exception {
         this.handler.notify(
-                buildEventFactory.createBuildStartedEvent(chain, chainExecution),
-                (BuildContext) chainExecution.getBuildIdentifier()
+                buildEventFactory.createBuildStartedEvent(chain, chainExecution)
         );
     }
 }

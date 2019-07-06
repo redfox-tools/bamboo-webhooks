@@ -7,4 +7,9 @@ public class JobStartedEvent extends AbstractEvent {
     public JobStartedEvent(String projectName, Plan plan, Build build) {
         super(projectName, plan, build);
     }
+
+    @Override
+    protected String getEventName() {
+        return "Job Started";
+    }
 }

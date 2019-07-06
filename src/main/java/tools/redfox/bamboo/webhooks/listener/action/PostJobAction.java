@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import tools.redfox.bamboo.webhooks.listener.events.factory.JobEventFactory;
 import tools.redfox.bamboo.webhooks.service.WebhookHandler;
 
-import static tools.redfox.bamboo.webhooks.listener.events.factory.StageEventFactory.getCurrentBuildContext;
-
 public class PostJobAction implements com.atlassian.bamboo.chains.plugins.PostJobAction {
     private WebhookHandler handler;
     private JobEventFactory jobEventFactory;
@@ -23,8 +21,7 @@ public class PostJobAction implements com.atlassian.bamboo.chains.plugins.PostJo
     @Override
     public void execute(@NotNull StageExecution stageExecution, @NotNull Job job, @NotNull BuildResultsSummary buildResultsSummary) {
         handler.notify(
-                jobEventFactory.createJobFinishedEvent(stageExecution, job, buildResultsSummary),
-                getCurrentBuildContext(stageExecution).getBuildContext()
+                jobEventFactory.createJobFinishedEvent(stageExecution, job, buildResultsSummary)
         );
     }
 }

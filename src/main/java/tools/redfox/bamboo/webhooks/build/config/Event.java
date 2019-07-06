@@ -13,7 +13,7 @@ public class Event {
     }
 
     public String getId() {
-        return "custom.bamboo.webhooks.events." + name.toLowerCase().replaceAll("[^a-z]+", "_");
+        return "custom.bamboo.webhook.events." + name.toLowerCase().replaceAll("[^a-z]+", "_");
     }
 
     @Override

@@ -20,4 +20,9 @@ public class DeploymentStartedEvent extends AbstractEvent {
     public String getEnvironment() {
         return environment;
     }
+
+    @Override
+    protected String getEventName() {
+        return "Deployment Started";
+    }
 }

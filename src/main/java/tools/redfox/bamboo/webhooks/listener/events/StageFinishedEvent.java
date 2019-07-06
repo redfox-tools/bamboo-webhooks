@@ -7,4 +7,9 @@ public class StageFinishedEvent extends AbstractEvent {
     public StageFinishedEvent(String projectName, Plan plan, Build build) {
         super(projectName, plan, build);
     }
+
+    @Override
+    protected String getEventName() {
+        return "Stage Finished";
+    }
 }

@@ -4,7 +4,6 @@ import com.atlassian.bamboo.chains.StageExecution;
 import com.atlassian.bamboo.v2.build.BuildContext;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import tools.redfox.bamboo.webhooks.listener.events.factory.BuildEventFactory;
 import tools.redfox.bamboo.webhooks.listener.events.factory.JobEventFactory;
 import tools.redfox.bamboo.webhooks.service.WebhookHandler;
 
@@ -21,8 +20,7 @@ public class PreJobAction implements com.atlassian.bamboo.chains.plugins.PreJobA
     @Override
     public void execute(@NotNull StageExecution stageExecution, @NotNull BuildContext buildContext) {
         handler.notify(
-                jobEventFactory.createJobStartedEvent(stageExecution, buildContext),
-                buildContext
+                jobEventFactory.createJobStartedEvent(stageExecution, buildContext)
         );
     }
 }

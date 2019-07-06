@@ -14,4 +14,9 @@ public class DeploymentFinishedEvent extends DeploymentStartedEvent {
     public String getStatus() {
         return status;
     }
+
+    @Override
+    protected String getEventName() {
+        return "Deployment Finished";
+    }
 }

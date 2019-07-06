@@ -20,4 +20,9 @@ public class VersionCreatedEvent extends AbstractEvent {
     public String getCreatedBy() {
         return createdBy;
     }
+
+    @Override
+    protected String getEventName() {
+        return "Version Created";
+    }
 }

@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import tools.redfox.bamboo.webhooks.listener.events.factory.StageEventFactory;
 import tools.redfox.bamboo.webhooks.service.WebhookHandler;
 
-import tools.redfox.bamboo.webhooks.listener.events.factory.StageEventFactory;
-
 public class PreStageAction implements com.atlassian.bamboo.chains.plugins.PreStageAction {
     private WebhookHandler handler;
     private StageEventFactory stageEventFactory;
@@ -21,8 +19,7 @@ public class PreStageAction implements com.atlassian.bamboo.chains.plugins.PreSt
     @Override
     public void execute(@NotNull StageExecution stageExecution) throws InterruptedException, Exception {
         handler.notify(
-                stageEventFactory.createStageStartedEvent(stageExecution),
-                StageEventFactory.getCurrentBuildContext(stageExecution).getBuildContext()
+                stageEventFactory.createStageStartedEvent(stageExecution)
         );
     }
 }

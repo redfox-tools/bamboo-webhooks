@@ -41,4 +41,10 @@ public abstract class AbstractEvent {
     public String getTime() {
         return time;
     }
+
+    public String getConfigKey() {
+        return "custom.bamboo.webhook.events." + getEventName().toLowerCase().replaceAll("[^a-z]+", "_");
+    }
+
+    protected abstract String getEventName();
 }

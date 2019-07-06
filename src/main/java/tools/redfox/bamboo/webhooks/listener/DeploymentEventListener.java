@@ -1,7 +1,5 @@
 package tools.redfox.bamboo.webhooks.listener;
 
-import com.atlassian.bamboo.builder.BuildState;
-import com.atlassian.bamboo.deployments.environments.service.EnvironmentService;
 import com.atlassian.bamboo.deployments.execution.events.DeploymentFinishedEvent;
 import com.atlassian.bamboo.deployments.execution.events.DeploymentStartedEvent;
 import com.atlassian.bamboo.deployments.results.DeploymentResult;
@@ -9,7 +7,6 @@ import com.atlassian.bamboo.deployments.results.service.DeploymentResultService;
 import com.atlassian.bamboo.deployments.versions.DeploymentVersion;
 import com.atlassian.bamboo.deployments.versions.events.DeploymentVersionCreatedEvent;
 import com.atlassian.bamboo.deployments.versions.service.DeploymentVersionService;
-import com.atlassian.bamboo.plan.PlanManager;
 import com.atlassian.bamboo.plan.PlanResultKey;
 import com.atlassian.bamboo.resultsummary.ResultsSummary;
 import com.atlassian.bamboo.resultsummary.ResultsSummaryManager;
@@ -26,25 +23,19 @@ import tools.redfox.bamboo.webhooks.service.WebhookHandler;
 public class DeploymentEventListener {
     private final DeploymentVersionService deploymentVersionService;
     private final DeploymentResultService deploymentResultService;
-    private final EnvironmentService environmentService;
     private final ResultsSummaryManager resultsSummaryManager;
-    private final PlanManager planManager;
     private final WebhookHandler handler;
 
     @Autowired
     public DeploymentEventListener(
             DeploymentVersionService deploymentVersionService,
             @ComponentImport DeploymentResultService deploymentResultService,
-            @ComponentImport EnvironmentService environmentService,
             @ComponentImport ResultsSummaryManager resultsSummaryManager,
-            @ComponentImport PlanManager planManager,
             WebhookHandler handler
     ) {
         this.deploymentVersionService = deploymentVersionService;
         this.deploymentResultService = deploymentResultService;
-        this.environmentService = environmentService;
         this.resultsSummaryManager = resultsSummaryManager;
-        this.planManager = planManager;
         this.handler = handler;
     }
 
@@ -62,8 +53,7 @@ public class DeploymentEventListener {
                         getBuild(results),
                         version.getName(),
                         result.getEnvironment().getName()
-                ),
-                null
+                )
         );
     }
 
@@ -82,8 +72,7 @@ public class DeploymentEventListener {
                         version.getName(),
                         result.getEnvironment().getName(),
                         result.getDeploymentState().toString().toUpperCase()
-                ),
-                null
+                )
         );
     }
 
@@ -100,8 +89,7 @@ public class DeploymentEventListener {
                         getBuild(results),
                         version.getName(),
                         version.getCreatorUserName()
-                ),
-                null
+                )
         );
     }
 
@@ -117,8 +105,7 @@ public class DeploymentEventListener {
         String reason = "Manual build";
         try {
             results.getTriggerReason().getName();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
         }
 
         return new Build(

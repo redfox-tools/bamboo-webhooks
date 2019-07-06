@@ -7,4 +7,9 @@ public class BuildStartedEvent extends AbstractEvent {
     public BuildStartedEvent(String projectName, Plan plan, Build build) {
         super(projectName, plan, build);
     }
+
+    @Override
+    protected String getEventName() {
+        return "Build Started";
+    }
 }

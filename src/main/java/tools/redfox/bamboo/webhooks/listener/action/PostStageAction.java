@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import tools.redfox.bamboo.webhooks.listener.events.factory.StageEventFactory;
 import tools.redfox.bamboo.webhooks.service.WebhookHandler;
 
-import static tools.redfox.bamboo.webhooks.listener.events.factory.AbstractFactory.getCurrentBuildContext;
-
 public class PostStageAction implements com.atlassian.bamboo.chains.plugins.PostStageAction {
     private WebhookHandler handler;
     private StageEventFactory stageEventFactory;
@@ -23,8 +21,7 @@ public class PostStageAction implements com.atlassian.bamboo.chains.plugins.Post
     @Override
     public void execute(@NotNull ChainResultsSummary chainResultsSummary, @NotNull ChainStageResult chainStageResult, @NotNull StageExecution stageExecution) throws InterruptedException, Exception {
         handler.notify(
-                stageEventFactory.createStageFinishedEvent(chainResultsSummary, chainStageResult, stageExecution),
-                getCurrentBuildContext(stageExecution).getBuildContext()
+                stageEventFactory.createStageFinishedEvent(chainResultsSummary, chainStageResult, stageExecution)
         );
     }
 }
