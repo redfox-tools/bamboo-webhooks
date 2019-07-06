@@ -13,8 +13,8 @@
 <!--    <bambooEventListener key="deploymentEventListener" class="tools.redfox.bamboo.webhooks.listener.DeploymentEventListener"/>-->
     <bambooEventListener key="pluginEventListener" class="tools.redfox.bamboo.webhooks.listener.PluginEventListener"/>
 
-<!--    <preBuildAction key="webhookPreBuildAction" class="tools.redfox.bamboo.webhooks.listener.action.PreBuildAction" />-->
-<!--    <postBuildAction key="webhookPostBuildAction" class="tools.redfox.bamboo.webhooks.listener.action.PostBuildAction" />-->
+    <preChainAction key="webhookPreBuildAction" class="tools.redfox.bamboo.webhooks.listener.action.PreBuildAction" />
+    <postChainAction key="webhookPostBuildAction" class="tools.redfox.bamboo.webhooks.listener.action.PostBuildAction" />
 
     <preStageAction key="webhookPreStageAction" class="tools.redfox.bamboo.webhooks.listener.action.PreStageAction" />
     <postStageAction key="webhookPostStageAction" class="tools.redfox.bamboo.webhooks.listener.action.PostStageAction" />

@@ -1,7 +1,13 @@
 package tools.redfox.bamboo.webhooks.listener.events.model;
 
+import com.atlassian.bamboo.chains.ChainResultsSummary;
 import com.atlassian.bamboo.v2.build.BuildContext;
+import com.atlassian.bamboo.v2.build.BuildIdentifier;
+import com.atlassian.bamboo.v2.build.trigger.TriggerReason;
 import com.fasterxml.jackson.annotation.JsonInclude;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class Build {
     private final String key;
@@ -15,6 +21,13 @@ public class Build {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private Stage stage;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String summary;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private List<Stage> stages;
+
 
     public Build(String key, int number, String trigger, boolean isBranchBuild, boolean isCustomBuild, String url) {
         this.key = key;
@@ -32,6 +45,17 @@ public class Build {
                 buildContext.getTriggerReason().getName(),
                 buildContext.isBranch(),
                 buildContext.isCustomBuild(),
+                url
+        );
+    }
+
+    public Build(ChainResultsSummary summary, String url) {
+        this(
+                summary.getBuildResultKey(),
+                summary.getBuildNumber(),
+                summary.getTriggerReason().getName(),
+                false, // is there a better way?
+                summary.isCustomBuild(),
                 url
         );
     }
@@ -80,5 +104,29 @@ public class Build {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
+
+    public List<Stage> getStages() {
+        return stages;
+    }
+
+    public void setStages(List<Stage> stages) {
+        this.stages = stages;
+    }
+
+    public void addStage(Stage stages) {
+        if (this.stages == null) {
+            this.stages = new LinkedList<>();
+        }
+
+        this.stages.add(stages);
     }
 }
