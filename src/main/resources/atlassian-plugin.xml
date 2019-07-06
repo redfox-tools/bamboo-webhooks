@@ -1,0 +1,29 @@
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <param name="plugin-icon">images/pluginIcon.png</param>
+        <param name="plugin-logo">images/pluginLogo.png</param>
+    </plugin-info>
+
+    <!-- add our i18n resource -->
+    <resource type="i18n" name="i18n" location="bamboo-webhooks"/>
+
+<!--    <bambooEventListener key="deploymentEventListener" class="tools.redfox.bamboo.webhooks.listener.DeploymentEventListener"/>-->
+    <bambooEventListener key="pluginEventListener" class="tools.redfox.bamboo.webhooks.listener.PluginEventListener"/>
+
+<!--    <preBuildAction key="webhookPreBuildAction" class="tools.redfox.bamboo.webhooks.listener.action.PreBuildAction" />-->
+<!--    <postBuildAction key="webhookPostBuildAction" class="tools.redfox.bamboo.webhooks.listener.action.PostBuildAction" />-->
+
+    <preStageAction key="webhookPreStageAction" class="tools.redfox.bamboo.webhooks.listener.action.PreStageAction" />
+    <postStageAction key="webhookPostStageAction" class="tools.redfox.bamboo.webhooks.listener.action.PostStageAction" />
+
+    <preJobAction key="webhookPreJobAction" class="tools.redfox.bamboo.webhooks.listener.action.PreJobAction" />
+    <postJobAction key="webhookPostJobAction" class="tools.redfox.bamboo.webhooks.listener.action.PostJobAction" />
+
+    <additionalBuildConfigurationPlugin key="webhooksConfiguration" name="Webooks Plan Configuration" class="tools.redfox.bamboo.webhooks.build.config.WebHooksConfiguration">
+        <resource type="freemarker" name="edit" location="templates/edit.ftl"/>
+    </additionalBuildConfigurationPlugin>
+
+</atlassian-plugin>
