@@ -3,27 +3,27 @@
         <description>${project.description}</description>
         <version>${project.version}</version>
         <vendor name="${project.organization.name}" url="${project.organization.url}" />
-        <param name="plugin-icon">images/pluginIcon.png</param>
-        <param name="plugin-logo">images/pluginLogo.png</param>
+        <param name="plugin-icon">images/webhooks/pluginIcon.png</param>
+        <param name="plugin-logo">images/webhooks/pluginLogo.png</param>
     </plugin-info>
 
     <!-- add our i18n resource -->
     <resource type="i18n" name="i18n" location="bamboo-webhooks"/>
 
-    <bambooEventListener key="deploymentEventListener" class="tools.redfox.bamboo.webhooks.listener.DeploymentEventListener"/>
-    <bambooEventListener key="pluginEventListener" class="tools.redfox.bamboo.webhooks.listener.PluginEventListener"/>
+    <bambooEventListener key="tools.redfox.webhooks.listeners.deployment" class="tools.redfox.bamboo.webhooks.listener.DeploymentEventListener"/>
+    <bambooEventListener key="tools.redfox.webhooks.listeners.plugin" class="tools.redfox.bamboo.webhooks.listener.PluginEventListener"/>
 
-    <preChainAction key="webhookPreBuildAction" class="tools.redfox.bamboo.webhooks.listener.action.PreBuildAction" />
-    <postChainAction key="webhookPostBuildAction" class="tools.redfox.bamboo.webhooks.listener.action.PostBuildAction" />
+    <preChainAction key="tools.redfox.webhooks.listeners.chain.pre" class="tools.redfox.bamboo.webhooks.listener.action.PreBuildAction" />
+    <postChainAction key="tools.redfox.webhooks.listeners.chain.post" class="tools.redfox.bamboo.webhooks.listener.action.PostBuildAction" />
 
-    <preStageAction key="webhookPreStageAction" class="tools.redfox.bamboo.webhooks.listener.action.PreStageAction" />
-    <postStageAction key="webhookPostStageAction" class="tools.redfox.bamboo.webhooks.listener.action.PostStageAction" />
+    <preStageAction key="tools.redfox.webhooks.listeners.stage.pre" class="tools.redfox.bamboo.webhooks.listener.action.PreStageAction" />
+    <postStageAction key="tools.redfox.webhooks.listeners.stage.post" class="tools.redfox.bamboo.webhooks.listener.action.PostStageAction" />
 
-    <preJobAction key="webhookPreJobAction" class="tools.redfox.bamboo.webhooks.listener.action.PreJobAction" />
-    <postJobAction key="webhookPostJobAction" class="tools.redfox.bamboo.webhooks.listener.action.PostJobAction" />
+    <preJobAction key="tools.redfox.webhooks.listeners.job.pre" class="tools.redfox.bamboo.webhooks.listener.action.PreJobAction" />
+    <postJobAction key="tools.redfox.webhooks.listeners.job.post" class="tools.redfox.bamboo.webhooks.listener.action.PostJobAction" />
 
-    <additionalBuildConfigurationPlugin key="webhooksConfiguration" name="Webooks Plan Configuration" class="tools.redfox.bamboo.webhooks.build.config.WebHooksConfiguration">
-        <resource type="freemarker" name="edit" location="templates/edit.ftl"/>
+    <additionalBuildConfigurationPlugin key="tools.redfox.webhooks.config.plan" name="Webooks Plan Configuration" class="tools.redfox.bamboo.webhooks.build.config.WebHooksConfiguration">
+        <resource type="freemarker" name="edit" location="templates/tools/redfox/webhooks/edit.ftl"/>
     </additionalBuildConfigurationPlugin>
 
 </atlassian-plugin>

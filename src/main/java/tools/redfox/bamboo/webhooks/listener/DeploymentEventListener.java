@@ -28,7 +28,7 @@ public class DeploymentEventListener {
 
     @Autowired
     public DeploymentEventListener(
-            DeploymentVersionService deploymentVersionService,
+            @ComponentImport DeploymentVersionService deploymentVersionService,
             @ComponentImport DeploymentResultService deploymentResultService,
             @ComponentImport ResultsSummaryManager resultsSummaryManager,
             WebhookHandler handler

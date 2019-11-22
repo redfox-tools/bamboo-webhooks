@@ -43,6 +43,6 @@ public class WebHooksConfiguration extends BaseBuildConfigurationAwarePlugin
                                           @NotNull BuildConfiguration buildConfiguration,
                                           Plan plan) {
         context.put("buildEvents", buildEvents.entrySet().iterator());
-        context.put("mode", buildConfiguration.getInt("custom.bamboo.webhook.mode"));
+        context.put("mode", buildConfiguration.getInt("custom.bamboo.webhook.mode", 1));
     }
 }

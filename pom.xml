@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>tools.redfox.bamboo</groupId>
     <artifactId>bamboo-webhooks</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 
     <organization>
         <name>redfox tools</name>
@@ -18,8 +18,8 @@
     <packaging>atlassian-plugin</packaging>
 
     <properties>
-        <bamboo.version>6.9.1</bamboo.version>
-        <bamboo.data.version>6.9.1</bamboo.data.version>
+        <bamboo.version>6.10.4</bamboo.version>
+        <bamboo.data.version>6.10.4</bamboo.data.version>
         <amps.version>8.0.2</amps.version>
         <plugin.testrunner.version>2.0.1</plugin.testrunner.version>
         <atlassian.spring.scanner.version>2.1.10</atlassian.spring.scanner.version>
