@@ -14,14 +14,14 @@ Additionally service can sign requests with HMAC-SHA256 using configurable secre
 ## Configuration
 
 ### Basic settings (same url for all events)
-![Screenshot](https://github.com/redfox-tools/bamboo-webhooks/raw/master/src/main/resources/images/basic.png)
+![Screenshot](https://raw.githubusercontent.com/redfox-tools/bamboo-webhooks/master/src/main/resources/images/webhooks/basic.png)
 
 ### Advanced settings
-![Screenshot](https://github.com/redfox-tools/bamboo-webhooks/raw/master/src/main/resources/images/advanced.png)
+![Screenshot](https://raw.githubusercontent.com/redfox-tools/bamboo-webhooks/master/src/main/resources/images/webhooks/advanced.png)
 
 ## Events
 
-![Screenshot](https://github.com/redfox-tools/bamboo-webhooks/raw/master/src/main/resources/images/request.png)
+![Screenshot](https://raw.githubusercontent.com/redfox-tools/bamboo-webhooks/master/src/main/resources/images/webhooks/request.png)
 
 ### Build started
 
